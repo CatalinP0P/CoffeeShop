@@ -1,0 +1,13 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+
+@model List<Product>
+
+<h1> Products </h1>
+<hr />
+
+<a class="btn btn-success text-white" asp-controller="Products" asp-action="New"> Add Product </a>
+
+@Html.Partial("_ProductCard", Model)
