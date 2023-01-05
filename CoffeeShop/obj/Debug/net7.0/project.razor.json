@@ -16575,6 +16575,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "/Users/catalinpop/Projects/CoffeeShop/CoffeeShop/Views/Products/details.cshtml",
+      "TargetPath": "Views\\Products\\details.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "/Users/catalinpop/Projects/CoffeeShop/CoffeeShop/Areas/Identity/Pages/_ViewStart.cshtml",
       "TargetPath": "Areas\\Identity\\Pages\\_ViewStart.cshtml",
       "FileKind": "mvc"

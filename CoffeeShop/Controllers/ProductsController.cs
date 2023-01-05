@@ -68,6 +68,19 @@ namespace CoffeeShop.Controllers
         }
 
 
+        // Products/Details/{id}
+        public IActionResult Details( int id )
+        {
+            var productInDb = _context.Products.SingleOrDefault( m => m.Id == id );
+
+            if ( productInDb == null )
+                return RedirectToAction("Index", "Products");
+
+            return View(productInDb);
+        }
+
+
+
 
 
         // ACTIONS ===============================

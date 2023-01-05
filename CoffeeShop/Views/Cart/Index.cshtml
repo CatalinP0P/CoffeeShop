@@ -15,7 +15,7 @@
     </tr>
 
     @foreach ( var p in Model )
-{
+    {
             <tr>
 
                 <th> @p.Product.Name </th>
@@ -25,7 +25,9 @@
                 </th>
 
             </tr>
-}
+    }
+
+<a class="btn btn-primary bg-success text-white" asp-controller="Order" asp-action="Form" asp-route-id="@Model." > Finalize Order </a>
 
 
 </table>

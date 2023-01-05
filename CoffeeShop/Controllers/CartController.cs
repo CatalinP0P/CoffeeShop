@@ -50,6 +50,7 @@ namespace CoffeeShop.Controllers
 
                     var ViewModel = new CartViewModel
                     {
+                        UserId = claims.Value,
                         CartProduct = p,
                         Product = productInDb
                     };
