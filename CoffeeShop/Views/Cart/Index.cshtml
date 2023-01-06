@@ -1,5 +1,10 @@
 ﻿@model CartViewModel
 
+
+<h1 class="Display-1" > My Cart </h1>
+<hr />
+
+
 <table class="table" >
 
     <tr>
@@ -27,7 +32,7 @@
             </tr>
     }
 
-<a class="btn btn-primary bg-success text-white" asp-controller="Order" asp-action="Form" asp-route-id="@Model.UserId" > Finalize Order </a>
+<a class="btn btn-primary bg-success text-white" asp-controller="Order" asp-action="AdressForm" asp-route-id="@Model.UserId" > Finalize Order </a>
 
 
 </table>

@@ -12,6 +12,7 @@
   <ItemGroup>
     <None Remove="Views\Products\" />
     <None Remove="Views\Cart\" />
+    <None Remove="Views\Order\" />
   </ItemGroup>
   <ItemGroup>
     <None Update="app.db" CopyToOutputDirectory="PreserveNewest" ExcludeFromSingleFile="true" />
@@ -28,5 +29,6 @@
   <ItemGroup>
     <Folder Include="Views\Products\" />
     <Folder Include="Views\Cart\" />
+    <Folder Include="Views\Order\" />
   </ItemGroup>
 </Project>

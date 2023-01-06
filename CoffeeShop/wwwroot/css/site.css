@@ -25,3 +25,11 @@ body {
     margin-top: 10px;
     margin-bottom: 10px;
 }
+
+.input-validation-error {
+    color: red;
+}
+
+.field-validation-error {
+    border: 2px solid red;
+}

@@ -1,11 +1,14 @@
 ﻿<Properties StartupConfiguration="{1F1DF212-7794-4810-BB47-43797C4B3B43}|https">
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="CoffeeShop/Models/CartViewModel.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="CoffeeShop/Controllers/OrderController.cs">
     <Files>
-      <File FileName="CoffeeShop/Controllers/HomeController.cs" />
-      <File FileName="CoffeeShop/Views/Home/Index.cshtml" />
-      <File FileName="CoffeeShop/Controllers/ProductsController.cs" Line="11" Column="37" />
+      <File FileName="CoffeeShop/Controllers/CartController.cs" Line="69" Column="43" />
+      <File FileName="CoffeeShop/Views/Cart/Index.cshtml" Line="29" Column="1" />
       <File FileName="CoffeeShop/Models/CartViewModel.cs" Line="1" Column="1" />
+      <File FileName="CoffeeShop/Models/CartProducts.cs" Line="1" Column="1" />
+      <File FileName="CoffeeShop/Models/CartModel.cs" Line="1" Column="1" />
+      <File FileName="CoffeeShop/Controllers/OrderController.cs" Line="13" Column="6" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -27,10 +30,9 @@
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.ItemProperties.CoffeeShop PreferredExecutionTarget="/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app" />
   <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.ItemProperties.CoffeeShop PreferredExecutionTarget="/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app" />
 </Properties>

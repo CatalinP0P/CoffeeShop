@@ -37,7 +37,6 @@ namespace CoffeeShop.Controllers
         }
 
         // Products/New
-        [Authorize(Roles = "Admin")]
         public IActionResult New()
         {
             var product = new Product();
@@ -52,7 +51,6 @@ namespace CoffeeShop.Controllers
 
 
         // Products/Edit/{id}
-        [Authorize(Roles = "Admin")]
         public IActionResult Edit(int id)
         {
             var productInDb = _context.Products.SingleOrDefault(m => m.Id == id);
@@ -88,9 +86,23 @@ namespace CoffeeShop.Controllers
 
         // Save Method Called By the ProductForm
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Admin")]
         public IActionResult Save(Product product)
         {
+            if ( !ModelState.IsValid )
+            {
+                if (product.Id == 0)
+                {
+                    var vm = new ProductViewModel
+                    {
+                        Product = product
+                    };
+
+                    return View("ProductForm", vm);
+
+                }    
+                    
+            }
+
             if (product.Id == 0)
             {
                 _context.Products.Add(product);
@@ -111,7 +123,6 @@ namespace CoffeeShop.Controllers
         }
 
 
-        [Authorize(Roles = "Admin")]
         public IActionResult Delete(int id)
         {
             var productInDb = _context.Products.SingleOrDefault(m => m.Id == id);
