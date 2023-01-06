@@ -1,0 +1,57 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+@model CoffeeShop.Models.Adress
+
+@using ( Html.BeginForm("SendOrder", "Order") )
+{
+        <div class="form">
+
+            <div class="form-group">
+
+                <label> Country </label>
+                @Html.TextBoxFor(m => m.Country, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m=>m.Country)
+
+            </div>
+
+            <div class="form-group">
+
+                <label> City </label>
+                @Html.TextBoxFor(m => m.City, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.City)
+            </div>
+
+            <div class="form-group">
+
+                <label> Street </label>
+                @Html.TextBoxFor(m => m.Street, new { @class = "form-control" })
+                @Html.ValidationMessageFor( m=>m.Street )
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label> Number </label>
+                @Html.TextBoxFor(m => m.Number, new { @class = "form-control" })
+                @Html.ValidationMessageFor( m=>m.Number )
+            </div>
+
+            <div class="form-group" >
+                <label> Phone number </label>
+                @Html.TextBoxFor(m=>m.PhoneNumber, new { @class = "form-control"})
+                @Html.ValidationMessageFor( m=>m.PhoneNumber )
+            </div>
+
+
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(m => m.UserId)
+            <button type="submit" class="btn btn-success"  > Send  </button>
+
+
+        </div>
+}
+
+
