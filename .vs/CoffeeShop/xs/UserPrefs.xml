@@ -5,7 +5,13 @@
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workbench ActiveDocument="CoffeeShop/Views/Order/Message.cshtml">
+    <Files>
+      <File FileName="CoffeeShop/Controllers/OrderController.cs" Line="74" Column="44" />
+      <File FileName="CoffeeShop/Models/Order.cs" Line="15" Column="1" />
+      <File FileName="CoffeeShop/Models/Adress.cs" Line="28" Column="1" />
+      <File FileName="CoffeeShop/Views/Order/Message.cshtml" Line="12" Column="40" />
+    </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
@@ -13,9 +19,7 @@
             <Node name="CoffeeShop" expanded="True">
               <Node name="Controllers" expanded="True" />
               <Node name="Data" expanded="True" />
-              <Node name="Models" expanded="True">
-                <Node name="CartProducts.cs" selected="True" />
-              </Node>
+              <Node name="Models" expanded="True" />
               <Node name="Views" expanded="True">
                 <Node name="Cart" expanded="True" />
                 <Node name="Order" expanded="True" />
