@@ -40,7 +40,12 @@ namespace CoffeeShop.Controllers
                 return RedirectToAction("Index", "Home");
             }
 
-            List<CartViewModel> Products = new List<CartViewModel>();
+            CartViewModel viewmodel = new CartViewModel
+            {
+                UserId = claims.Value,
+            };
+
+            List<CartModel> Products = new List<CartModel>();
 
             foreach( var p in _context.CartProducts )
             {
@@ -48,7 +53,7 @@ namespace CoffeeShop.Controllers
                 {
                     var productInDb = _context.Products.Single(m => m.Id == p.ProductId);
 
-                    var ViewModel = new CartViewModel
+                    var ViewModel = new CartModel
                     {
                         UserId = claims.Value,
                         CartProduct = p,
@@ -59,7 +64,9 @@ namespace CoffeeShop.Controllers
                 }
             }
 
-            return View("Index", Products);
+            viewmodel.CartModels = Products;
+
+            return View("Index", viewmodel);
         }
 
 

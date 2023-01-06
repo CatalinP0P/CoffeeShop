@@ -1,4 +1,4 @@
-﻿@model List<CartViewModel>
+﻿@model CartViewModel
 
 <table class="table" >
 
@@ -14,7 +14,7 @@
         </th>
     </tr>
 
-    @foreach ( var p in Model )
+    @foreach ( var p in Model.CartModels )
     {
             <tr>
 
@@ -27,7 +27,7 @@
             </tr>
     }
 
-<a class="btn btn-primary bg-success text-white" asp-controller="Order" asp-action="Form" asp-route-id="@Model." > Finalize Order </a>
+<a class="btn btn-primary bg-success text-white" asp-controller="Order" asp-action="Form" asp-route-id="@Model.UserId" > Finalize Order </a>
 
 
 </table>

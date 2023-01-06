@@ -1,10 +1,10 @@
 ﻿using System;
 namespace CoffeeShop.Models
 {
-	public class CartViewModel
+	public class CartModel
 	{
 
-		public CartViewModel()
+		public CartModel()
 		{
 
 		}
