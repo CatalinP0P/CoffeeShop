@@ -35,6 +35,28 @@ namespace CoffeeShop.Data.Migrations
                     b.ToTable("CartProducts");
                 });
 
+            modelBuilder.Entity("CoffeeShop.Models.Order", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("OrderDate")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("ProductIds")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Orders");
+                });
+
             modelBuilder.Entity("CoffeeShop.Models.Product", b =>
                 {
                     b.Property<int>("Id")
