@@ -7,6 +7,7 @@ namespace CoffeeShop.Models
 	{
 		public Order()
 		{
+            Status = StatusType.Pending.ToString();
 		}
 
 		public int Id { get; set; }
@@ -32,6 +33,8 @@ namespace CoffeeShop.Models
         public DateTime OrderDate { get; set; }
 
 		public string ProductIds { get; set; } // with string format ex : 1#13#21#102 separated by #
+
+        public string Status { get; set; }
 
 	}
 }

@@ -1,0 +1,31 @@
+﻿@model OrderViewModel
+
+
+<h1> Change order Status </h1>
+<hr />
+
+<div class="d-flex justify-content-center">
+    @using (Html.BeginForm("SaveStatus", "Admin"))
+    {
+        <div class="form mx-auto" style="height:50%">
+
+            <div class="form-group">
+                @Html.DropDownListFor(m => m.Order.Status, new SelectList(Model.StatusTypes), "Choose a Status", new { @class = "form-control" })
+            </div>
+
+
+            @Html.HiddenFor(m => m.Order.Id)
+            @Html.HiddenFor(m => m.Order.OrderDate)
+            @Html.HiddenFor(m => m.Order.PhoneNumber)
+            @Html.HiddenFor(m => m.Order.Street)
+            @Html.HiddenFor(m => m.Order.UserId)
+            @Html.HiddenFor(m => m.Order.ProductIds)
+            @Html.HiddenFor(m => m.Order.Number)
+
+
+            <button type="submit" class="btn btn-primary"> Save </button>
+        </div>
+
+    }
+</div>
+

@@ -1,16 +1,14 @@
 ﻿<Properties StartupConfiguration="{1F1DF212-7794-4810-BB47-43797C4B3B43}|https">
-  <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.CoffeeShop PreferredExecutionTarget="/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app" />
+  <MultiItemStartupConfigurations />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="CoffeeShop/Views/Order/Message.cshtml">
+  <MonoDevelop.Ide.Workbench ActiveDocument="CoffeeShop/Views/Admin/OrderStatus.cshtml">
     <Files>
-      <File FileName="CoffeeShop/Controllers/OrderController.cs" Line="74" Column="44" />
-      <File FileName="CoffeeShop/Models/Order.cs" Line="15" Column="1" />
-      <File FileName="CoffeeShop/Models/Adress.cs" Line="28" Column="1" />
-      <File FileName="CoffeeShop/Views/Order/Message.cshtml" Line="12" Column="40" />
+      <File FileName="CoffeeShop/Views/Admin/OrderStatus.cshtml" Line="10" Column="52" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -21,8 +19,9 @@
               <Node name="Data" expanded="True" />
               <Node name="Models" expanded="True" />
               <Node name="Views" expanded="True">
-                <Node name="Cart" expanded="True" />
-                <Node name="Order" expanded="True" />
+                <Node name="Admin" expanded="True">
+                  <Node name="OrderStatus.cshtml" selected="True" />
+                </Node>
               </Node>
               <Node name="wwwroot" expanded="True">
                 <Node name="css" expanded="True" />
@@ -33,5 +32,4 @@
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.ItemProperties.CoffeeShop PreferredExecutionTarget="/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app" />
 </Properties>

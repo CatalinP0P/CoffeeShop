@@ -1,0 +1,97 @@
+﻿@model List<Order>
+
+<h1> Manage Orders </h1>
+<hr />
+
+<div class="containter bg-transparent" >
+
+    <table class="table">
+
+        <tr>
+            <th> Order ID </th>
+            <th> User ID </th>
+            <th> Adress </th>
+            <th> Products </th>
+            <th> Status </th>
+        </tr>
+
+
+        @foreach (var order in Model)
+        {
+
+            @if (order.Status == StatusType.Pending.ToString())
+            {
+                <tr class="table-active">
+                    <th> @order.Id </th>
+                    <th> @order.UserId </th>
+                    <th> <a class="text-decoration-underline"> Adress </a> </th>
+                    <th><a> Products </a></th>
+                    <th> <a asp-action="OrderStatus" asp-controller="Admin" asp-route-id="@order.Id">Pending</a> </th>
+                </tr>
+
+            }
+
+            @if (order.Status == StatusType.Confirmed.ToString())
+            {
+                <tr class="table-info">
+                    <th> @order.Id </th>
+                    <th> @order.UserId </th>
+                    <th> <a class="text-decoration-underline"> Adress </a> </th>
+                    <th><a> Products </a></th>
+                    <th> <a asp-action="OrderStatus" asp-controller="Admin" asp-route-id="@order.Id">Confirmed</a> </th>
+                </tr>
+            }
+
+            @if (order.Status == StatusType.Send.ToString())
+            {
+                <tr class="table-warning">
+                    <th> @order.Id </th>
+                    <th> @order.UserId </th>
+                    <th> <a class="text-decoration-underline"> Adress </a> </th>
+                    <th><a> Products </a></th>
+                    <th> <a asp-action="OrderStatus" asp-controller="Admin" asp-route-id="@order.Id">Send</a> </th>
+                </tr>
+            }
+            @if (order.Status == StatusType.Received.ToString())
+            {
+                <tr class="table-success">
+                    <th> @order.Id </th>
+                    <th> @order.UserId </th>
+                    <th> <a class="text-decoration-underline"> Adress </a> </th>
+                    <th><a> Products </a></th>
+                    <th> <a asp-action="OrderStatus" asp-controller="Admin" asp-route-id="@order.Id">Received</a> </th>
+                </tr>
+
+            }
+            @if (order.Status == StatusType.Canceled.ToString())
+            {
+                <tr class="table-danger">
+                    <th> @order.Id </th>
+                    <th> @order.UserId </th>
+                    <th> <a class="text-decoration-underline"> Adress </a> </th>
+                    <th><a> Products </a></th>
+                    <th> <a asp-action="OrderStatus" asp-controller="Admin" asp-route-id="@order.Id">Canceled</a> </th>
+                </tr>
+            }
+            @if (order.Status == StatusType.Returned.ToString())
+            {
+                <tr class="table-info">
+                    <th> @order.Id </th>
+                    <th> @order.UserId </th>
+                    <th> <a class="text-decoration-underline"> Adress </a> </th>
+                    <th><a> Products </a></th>
+                    <th> <a asp-action="OrderStatus" asp-controller="Admin" asp-route-id="@order.Id">Canceled</a> </th>
+                </tr>
+            }
+
+
+
+
+        }
+
+
+
+    </table>
+
+
+</div>
