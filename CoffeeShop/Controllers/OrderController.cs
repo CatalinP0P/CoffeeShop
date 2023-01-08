@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using CoffeeShop.Data;
 using CoffeeShop.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -94,6 +96,27 @@ namespace CoffeeShop.Controllers
 
         }
 
+        [Authorize]
+        public IActionResult ShowOrders()
+        {
+            var claimsIdentity = (ClaimsIdentity)User.Identity;
+            var claims = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
+
+            var userid = claims.Value;
+
+            List<Order> orders = new List<Order>();
+
+            foreach ( Order order in _context.Orders )
+            {
+                if (order.UserId == userid)
+                    orders.Add(order);
+            }
+
+
+            return View(orders);
+
+
+        }
 
     }
 }
