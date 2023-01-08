@@ -44,6 +44,18 @@ namespace CoffeeShop.Controllers
         }
 
 
+        public IActionResult OrderAdress(int orderid)
+        {
+            var orderInDb = _context.Orders.SingleOrDefault( m=>m.Id == orderid);
+            if (orderInDb == null)
+                return View("ManageOrders", _context.Orders.ToList());
+
+
+            return View(orderInDb);
+
+        }
+
+
         // GET: /<controller>/
         public IActionResult Index()
         {

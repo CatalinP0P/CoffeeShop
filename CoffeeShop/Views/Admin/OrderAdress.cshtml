@@ -1,0 +1,20 @@
+﻿@model Order
+
+
+<h1> Order Adress </h1>
+<hr />
+
+<ul class="list-group" >
+    <li class="list-group-item" > Country: @Model.Country </li>
+
+    <l1 class="list-group-item" > City: @Model.City </l1>
+
+    <l1 class="list-group-item" > Street: @Model.Street </l1>
+
+    <l1 class="list-group-item" > Number: @Model.Number </l1>
+
+    <l1 class="list-group-item" > Phone: @Model.PhoneNumber </l1>
+
+</ul>
+
+<a class="btn btn-primary btn-large" asp-action="ManageOrders" asp-controller="Admin"> Back </a>
