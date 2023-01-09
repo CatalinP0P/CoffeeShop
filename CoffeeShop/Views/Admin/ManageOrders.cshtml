@@ -12,6 +12,7 @@
             <th> User ID </th>
             <th> Adress </th>
             <th> Products </th>
+            <th> Total Price </th>
             <th> Status </th>
         </tr>
 
@@ -26,6 +27,7 @@
                     <th> @order.UserId </th>
                     <th> <a class="text-decoration-underline" asp-action="OrderAdress" asp-controller="Admin" asp-route-orderid="@order.Id"> Adress </a> </th>
                     <th><a> Products </a></th>
+                    <th> @order.Price </th>
                     <th> <a asp-action="OrderStatus" asp-controller="Admin" asp-route-id="@order.Id">Pending</a> </th>
                 </tr>
 
@@ -36,8 +38,9 @@
                 <tr class="table-info">
                     <th> @order.Id </th>
                     <th> @order.UserId </th>
-                    <th> <a class="text-decoration-underline" asp-action="OrderAdress" asp-controller="Admin" asp-route-orderid="@order.Id" > Adress </a> </th>
+                    <th> <a class="text-decoration-underline" asp-action="OrderAdress" asp-controller="Admin" asp-route-orderid="@order.Id"> Adress </a> </th>
                     <th><a> Products </a></th>
+                    <th> @order.Price </th>
                     <th> <a asp-action="OrderStatus" asp-controller="Admin" asp-route-id="@order.Id">Confirmed</a> </th>
                 </tr>
             }
@@ -49,6 +52,7 @@
                     <th> @order.UserId </th>
                     <th> <a class="text-decoration-underline" asp-action="OrderAdress" asp-controller="Admin" asp-route-orderid="@order.Id"> Adress </a> </th>
                     <th><a> Products </a></th>
+                    <th> @order.Price </th>
                     <th> <a asp-action="OrderStatus" asp-controller="Admin" asp-route-id="@order.Id">Send</a> </th>
                 </tr>
             }
@@ -59,6 +63,7 @@
                     <th> @order.UserId </th>
                     <th> <a class="text-decoration-underline" asp-action="OrderAdress" asp-controller="Admin" asp-route-orderid="@order.Id"> Adress </a> </th>
                     <th><a> Products </a></th>
+                    <th> @order.Price </th>
                     <th> <a asp-action="OrderStatus" asp-controller="Admin" asp-route-id="@order.Id">Received</a> </th>
                 </tr>
 
@@ -70,6 +75,7 @@
                     <th> @order.UserId </th>
                     <th> <a class="text-decoration-underline" asp-action="OrderAdress" asp-controller="Admin" asp-route-orderid="@order.Id"> Adress </a> </th>
                     <th><a> Products </a></th>
+                    <th> @order.Price </th>
                     <th> <a asp-action="OrderStatus" asp-controller="Admin" asp-route-id="@order.Id">Canceled</a> </th>
                 </tr>
             }
@@ -80,6 +86,7 @@
                     <th> @order.UserId </th>
                     <th> <a class="text-decoration-underline" asp-action="OrderAdress" asp-controller="Admin" asp-route-orderid="@order.Id"> Adress </a> </th>
                     <th><a> Products </a></th>
+                    <th> @order.Price </th>
                     <th> <a asp-action="OrderStatus" asp-controller="Admin" asp-route-id="@order.Id">Canceled</a> </th>
                 </tr>
             }

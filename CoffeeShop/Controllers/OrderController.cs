@@ -49,15 +49,24 @@ namespace CoffeeShop.Controllers
 
             
 
+
             string productids = "#";
+
+            int totalPrice = 0;
 
             foreach ( var product in _context.CartProducts )
             {
                 if ( product.UserId == adress.UserId )
                 {
                     productids += $"{product.ProductId}#";
+                    var productInDb = _context.Products.Single(m=>m.Id == product.ProductId);
+                    totalPrice += productInDb.Price;
                 }
             }
+
+            // Order price
+
+
 
 
             var Order = new Order
@@ -69,6 +78,8 @@ namespace CoffeeShop.Controllers
                 PhoneNumber = adress.PhoneNumber,
                 Street = adress.Street,
                 Number = adress.Number,
+
+                Price = totalPrice,
 
                 ProductIds = productids,
                 OrderDate = DateTime.Now

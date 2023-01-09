@@ -16,7 +16,9 @@ namespace CoffeeShop.Models
 			};
 		}
 
+
 		public Order Order { get; set; }
+
 		public List<string> StatusTypes { get; set; }
 	}
 }

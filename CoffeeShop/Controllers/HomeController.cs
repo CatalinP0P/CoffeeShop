@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using CoffeeShop.Models;
 using CoffeeShop.Data;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace CoffeeShop.Controllers;
 
@@ -20,6 +21,7 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
+        // AddRole();
         return View();
     }
 
@@ -33,5 +35,6 @@ public class HomeController : Controller
     {
         return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
     }
+
 }
 

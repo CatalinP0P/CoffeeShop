@@ -1,6 +1,6 @@
 ﻿@model List<Order>
 
-<h1> Manage Orders </h1>
+<h1> Your Orders </h1>
 <hr />
 
 <div class="containter bg-transparent">
@@ -10,8 +10,8 @@
         <tr>
             <th> Order ID </th>
             <th> Date </th>
-            <th> Adress </th>
             <th> Products </th>
+            <th> Price </th>
             <th> Status </th>
         </tr>
 
@@ -24,8 +24,8 @@
                 <tr class="table-active">
                     <th> @order.Id </th>
                     <th> @order.OrderDate </th>
-                    <th> Adress </th>
                     <th><a> Products </a></th>
+                    <th> @order.Price Ron </th>
                     <th> Pending </th>
                 </tr>
 
@@ -36,8 +36,8 @@
                 <tr class="table-info">
                     <th> @order.Id </th>
                     <th> @order.OrderDate </th>
-                    <th> Adress </th>
                     <th><a> Products </a></th>
+                    <th> @order.Price Ron </th>
                     <th> Confirmed </th>
                 </tr>
             }
@@ -47,8 +47,8 @@
                 <tr class="table-warning">
                     <th> @order.Id </th>
                     <th> @order.OrderDate </th>
-                    <th> Adress </th>
                     <th><a> Products </a></th>
+                    <th> @order.Price Ron </th>
                     <th> Send </th>
                 </tr>
             }
@@ -57,8 +57,8 @@
                 <tr class="table-success">
                     <th> @order.Id </th>
                     <th> @order.OrderDate </th>
-                    <th> Adress </th>
                     <th><a> Products </a></th>
+                    <th> @order.Price Ron </th>
                     <th> Received </th>
                 </tr>
 
@@ -68,8 +68,8 @@
                 <tr class="table-danger">
                     <th> @order.Id </th>
                     <th> @order.OrderDate </th>
-                    <th> Adress </th>
                     <th><a> Products </a></th>
+                    <th> @order.Price Ron </th>
                     <th> Canceled </th>
                 </tr>
             }
@@ -78,8 +78,8 @@
                 <tr class="table-info">
                     <th> @order.Id </th>
                     <th> @order.OrderDate </th>
-                    <th> Adress </th>
                     <th><a> Products </a></th>
+                    <th> @order.Price Ron </th>
                     <th> Canceled </th>
                 </tr>
             }
