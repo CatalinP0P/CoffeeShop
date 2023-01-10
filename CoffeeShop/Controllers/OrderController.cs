@@ -27,7 +27,7 @@ namespace CoffeeShop.Controllers
 
         public IActionResult AdressForm(string id) // userid
         {
-            var cartprod = _context.CartProducts.SingleOrDefault(m=>m.UserId == id);
+            var cartprod = _context.CartProducts.FirstOrDefault(m=>m.UserId == id);
             if (cartprod == null)
                 return RedirectToAction("Index","Cart");
 
