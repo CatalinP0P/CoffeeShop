@@ -1,4 +1,4 @@
-﻿@model List<Order>
+﻿@model List<ShowOrdersViewModel>
 
 <h1> Your Orders </h1>
 <hr />
@@ -19,67 +19,67 @@
         @foreach (var order in Model)
         {
 
-            @if (order.Status == StatusType.Pending.ToString())
+            @if (order.Orders.Status == StatusType.Pending.ToString())
             {
                 <tr class="table-active">
-                    <th> @order.Id </th>
-                    <th> @order.OrderDate </th>
+                    <th> @order.Orders.Id </th>
+                    <th> @order.Orders.OrderDate </th>
                     <th><a> Products </a></th>
-                    <th> @order.Price Ron </th>
+                    <th> @order.Orders.Price Ron </th>
                     <th> Pending </th>
                 </tr>
 
             }
 
-            @if (order.Status == StatusType.Confirmed.ToString())
+            @if (order.Orders.Status == StatusType.Confirmed.ToString())
             {
                 <tr class="table-info">
-                    <th> @order.Id </th>
-                    <th> @order.OrderDate </th>
+                    <th> @order.Orders.Id </th>
+                    <th> @order.Orders.OrderDate </th>
                     <th><a> Products </a></th>
-                    <th> @order.Price Ron </th>
+                    <th> @order.Orders.Price Ron </th>
                     <th> Confirmed </th>
                 </tr>
             }
 
-            @if (order.Status == StatusType.Send.ToString())
+            @if (order.Orders.Status == StatusType.Send.ToString())
             {
                 <tr class="table-warning">
-                    <th> @order.Id </th>
-                    <th> @order.OrderDate </th>
+                    <th> @order.Orders.Id </th>
+                    <th> @order.Orders.OrderDate </th>
                     <th><a> Products </a></th>
-                    <th> @order.Price Ron </th>
+                    <th> @order.Orders.Price Ron </th>
                     <th> Send </th>
                 </tr>
             }
-            @if (order.Status == StatusType.Received.ToString())
+            @if (order.Orders.Status == StatusType.Received.ToString())
             {
                 <tr class="table-success">
-                    <th> @order.Id </th>
-                    <th> @order.OrderDate </th>
+                    <th> @order.Orders.Id </th>
+                    <th> @order.Orders.OrderDate </th>
                     <th><a> Products </a></th>
-                    <th> @order.Price Ron </th>
+                    <th> @order.Orders.Price Ron </th>
                     <th> Received </th>
                 </tr>
 
             }
-            @if (order.Status == StatusType.Canceled.ToString())
+            @if (order.Orders.Status == StatusType.Canceled.ToString())
             {
                 <tr class="table-danger">
-                    <th> @order.Id </th>
-                    <th> @order.OrderDate </th>
+                    <th> @order.Orders.Id </th>
+                    <th> @order.Orders.OrderDate </th>
                     <th><a> Products </a></th>
-                    <th> @order.Price Ron </th>
+                    <th> @order.Orders.Price Ron </th>
                     <th> Canceled </th>
                 </tr>
             }
-            @if (order.Status == StatusType.Returned.ToString())
+            @if (order.Orders.Status == StatusType.Returned.ToString())
             {
                 <tr class="table-info">
-                    <th> @order.Id </th>
-                    <th> @order.OrderDate </th>
+                    <th> @order.Orders.Id </th>
+                    <th> @order.Orders.OrderDate </th>
                     <th><a> Products </a></th>
-                    <th> @order.Price Ron </th>
+                    <th> @order.Orders.Price Ron </th>
                     <th> Canceled </th>
                 </tr>
             }

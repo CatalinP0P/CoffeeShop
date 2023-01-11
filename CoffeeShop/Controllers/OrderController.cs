@@ -115,14 +115,29 @@ namespace CoffeeShop.Controllers
 
             var userid = claims.Value;
 
-            List<Order> orders = new List<Order>();
+
+            List<ShowOrdersViewModel> orders = new List<ShowOrdersViewModel>();
 
             foreach ( Order order in _context.Orders )
             {
-                if (order.UserId == userid)
-                    orders.Add(order);
-            }
+                List<int> idList = new List<int>();
 
+                string[] ids = order.ProductIds.Split('#');
+
+                for ( int i = 1; i < ids.Length-1; i++ )
+                {
+                    ids[i] = ids[i].Replace('"', ' ');
+                    idList.Add(Int32.Parse(ids[i]));
+                }
+
+                ShowOrdersViewModel temp = new ShowOrdersViewModel
+                {
+                    Orders = order,
+                    ProductIds = idList
+                };
+
+                orders.Add(temp);
+            }
 
             return View(orders);
 
