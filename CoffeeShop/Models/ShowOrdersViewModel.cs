@@ -12,7 +12,9 @@ namespace CoffeeShop.Models
 
 		public List<int> ProductIds { get; set; }
 
-
+		public List<Product> Products { get; set; }
+ 
+		public List<string> ProductImageUrl { get; set; }
 	}
 }
 

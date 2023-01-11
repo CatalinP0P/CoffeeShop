@@ -130,10 +130,26 @@ namespace CoffeeShop.Controllers
                     idList.Add(Int32.Parse(ids[i]));
                 }
 
+                List<string> imageUrls = new List<string>();
+                List<Product> productList = new List<Product>();
+
+                foreach ( int id in idList )
+                {
+                    var productInDb = _context.Products.Single(m => m.Id == id);
+
+                    imageUrls.Add(productInDb.ImageURL);
+
+                    productList.Add(productInDb);
+
+                }
+
+
                 ShowOrdersViewModel temp = new ShowOrdersViewModel
                 {
                     Orders = order,
-                    ProductIds = idList
+                    ProductIds = idList,
+                    ProductImageUrl = imageUrls,
+                    Products = productList
                 };
 
                 orders.Add(temp);

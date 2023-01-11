@@ -1,0 +1,19 @@
+﻿@model Order 
+
+
+<div class="card mx-auto my-4" style="width: 75%;">
+    <div class="container mt-3 ">
+        <a href="#">
+            <h3 class="text-primary"> Comanda nr. @Model.Id </h3>
+        </a>
+
+
+        <p class="text-muted"> Plasata pe: @Model.OrderDate | Total: @Model.Price Lei</p>
+        <hr style="color: black" />
+        <p class="text-muted"> Produse vandute si livrate de CoffeeShop </p>
+        <p class="text-muted"> Subtotal :  @Model.Price Lei </p>
+        <p style="color: #10b2f8" > @Model.Status </p>
+
+
+    </div>
+</div>
