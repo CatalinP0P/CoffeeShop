@@ -7,7 +7,7 @@ namespace CoffeeShop.Models
 	{
 		public ProductViewModel()
 		{
-
+			Product = new Product();
 		}
 
 		public Product Product { get; set; }

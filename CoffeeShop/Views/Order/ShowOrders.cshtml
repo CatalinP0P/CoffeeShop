@@ -5,7 +5,10 @@
 
 <div class="containter bg-transparent">
 
-    @foreach (var order in Model)
-            @Html.Partial("_OrderProductShow",order.Orders)
+    <div class="container py-5" style=" background: #e3f1f9;">
+        @foreach (var order in Model)
+            @Html.Partial("_OrderProductShow", order.Orders)
+    </div>
+    
 
 </div>

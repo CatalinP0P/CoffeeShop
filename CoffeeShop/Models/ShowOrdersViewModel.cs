@@ -5,7 +5,7 @@ namespace CoffeeShop.Models
 	{
 		public ShowOrdersViewModel()
 		{
-
+			
 		}
 
 		public Order Orders { get; set; }

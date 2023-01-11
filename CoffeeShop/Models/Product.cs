@@ -7,8 +7,9 @@ namespace CoffeeShop.Models
 	{
 		public Product()
 		{
-
+			
 		}
+
 
 		[Required]
 		public int Id { get; set; }

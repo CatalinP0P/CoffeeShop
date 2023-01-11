@@ -7,7 +7,7 @@ namespace CoffeeShop.Models
 	{
 		public Order()
 		{
-            Status = StatusType.Pending.ToString();
+            
 		}
 
 		public int Id { get; set; }
