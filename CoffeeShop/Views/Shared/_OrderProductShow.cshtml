@@ -3,7 +3,7 @@
 
 <div class="card mx-auto my-4" style="width: 75%;">
     <div class="container mt-3 ">
-        <a href="#">
+        <a asp-controller="Order" asp-action="Details" asp-route-id="@Model.Id" >
             <h3 class="text-primary"> Comanda nr. @Model.Id </h3>
         </a>
 

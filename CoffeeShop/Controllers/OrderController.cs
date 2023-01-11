@@ -25,6 +25,76 @@ namespace CoffeeShop.Controllers
             _context = context;
         }
 
+        [Authorize]
+        public IActionResult Details(int id)
+        {
+            var orderInDb = _context.Orders.SingleOrDefault(m => m.Id == id);
+            if (orderInDb == null)
+                return View("ShowOrders");
+
+            return View("Details", orderInDb);
+
+        }
+
+        [Authorize]
+        public IActionResult ShowOrders()
+        {
+            var claimsIdentity = (ClaimsIdentity)User.Identity;
+            var claims = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
+
+            var userid = claims.Value;
+
+
+            List<ShowOrdersViewModel> orders = new List<ShowOrdersViewModel>();
+
+
+
+            foreach (Order order in _context.Orders)
+            {
+                List<int> idList = new List<int>();
+
+                string[] ids = order.ProductIds.Split('#');
+
+                for (int i = 1; i < ids.Length - 1; i++)
+                {
+                    ids[i] = ids[i].Replace('"', ' ');
+                    idList.Add(Int32.Parse(ids[i]));
+                }
+
+                List<string> imageUrls = new List<string>();
+                List<Product> productList = new List<Product>();
+
+                foreach (int id in idList)
+                {
+                    var productInDb = _context.Products.Single(m => m.Id == id);
+
+                    imageUrls.Add(productInDb.ImageURL);
+
+                    productList.Add(productInDb);
+
+                }
+
+                ShowOrdersViewModel temp = new ShowOrdersViewModel
+                {
+                    Orders = order,
+                    ProductIds = idList,
+                    ProductImageUrl = imageUrls,
+                    Products = productList
+                };
+
+                orders.Add(temp);
+            }
+
+
+            orders = orders.OrderByDescending(m => m.Orders.Id).ToList();
+
+            return View(orders);
+
+
+        }
+
+
+
         public IActionResult AdressForm(string id) // userid
         {
             var cartprod = _context.CartProducts.FirstOrDefault(m=>m.UserId == id);
@@ -107,59 +177,7 @@ namespace CoffeeShop.Controllers
 
         }
 
-        [Authorize]
-        public IActionResult ShowOrders()
-        {
-            var claimsIdentity = (ClaimsIdentity)User.Identity;
-            var claims = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
-
-            var userid = claims.Value;
-
-
-            List<ShowOrdersViewModel> orders = new List<ShowOrdersViewModel>();
-
-            foreach ( Order order in _context.Orders )
-            {
-                List<int> idList = new List<int>();
-
-                string[] ids = order.ProductIds.Split('#');
-
-                for ( int i = 1; i < ids.Length-1; i++ )
-                {
-                    ids[i] = ids[i].Replace('"', ' ');
-                    idList.Add(Int32.Parse(ids[i]));
-                }
-
-                List<string> imageUrls = new List<string>();
-                List<Product> productList = new List<Product>();
-
-                foreach ( int id in idList )
-                {
-                    var productInDb = _context.Products.Single(m => m.Id == id);
-
-                    imageUrls.Add(productInDb.ImageURL);
-
-                    productList.Add(productInDb);
-
-                }
-
-
-                ShowOrdersViewModel temp = new ShowOrdersViewModel
-                {
-                    Orders = order,
-                    ProductIds = idList,
-                    ProductImageUrl = imageUrls,
-                    Products = productList
-                };
-
-                orders.Add(temp);
-            }
-
-            return View(orders);
-
-
-        }
-
+       
     }
 }
 

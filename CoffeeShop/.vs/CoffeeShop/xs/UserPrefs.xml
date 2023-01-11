@@ -1,17 +1,21 @@
 ﻿<Properties StartupConfiguration="{0D124CBE-B722-4DC7-850C-10980782E04E}|https">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Views/Order/ShowOrders.cshtml">
-    <Files>
-      <File FileName="Views/Order/ShowOrders.cshtml" Line="34" Column="65" />
-      <File FileName="Models/ShowOrdersViewModel.cs" Line="15" Column="44" />
-      <File FileName="Controllers/OrderController.cs" Line="152" Column="43" />
-    </Files>
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.ItemProperties.CoffeeShop PreferredExecutionTarget="/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="CoffeeShop" expanded="True">
             <Node name="CoffeeShop" expanded="True">
               <Node name="Controllers" expanded="True" />
-              <Node name="Models" expanded="True" />
+              <Node name="Models" expanded="True">
+                <Node name="ShowOrdersViewModel.cs" selected="True" />
+              </Node>
               <Node name="Views" expanded="True">
                 <Node name="Order" expanded="True" />
                 <Node name="Shared" expanded="True" />
@@ -22,11 +26,4 @@
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.ItemProperties.CoffeeShop PreferredExecutionTarget="/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app" />
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MultiItemStartupConfigurations />
 </Properties>
