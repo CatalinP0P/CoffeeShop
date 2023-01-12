@@ -1,15 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using CoffeeShop.Data;
 using CoffeeShop.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace CoffeeShop.Controllers
 {
+    [Authorize]
     public class AdminController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -21,9 +24,38 @@ namespace CoffeeShop.Controllers
             _logger = logger;
             _context = context;
         }
+        public string GetRole()
+        {
+            string userRole = "Customer";
+
+             var claimsIdentity = (ClaimsIdentity)User.Identity;
+            var claims = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
+
+            if ( claims == null )
+            {
+                return userRole;
+            }
+
+            var role = _context.AccountRoles.FirstOrDefault(m=>m.UserId == claims.Value);
+
+            if ( role == null )
+            {
+                userRole = "Customer";
+                return userRole;
+            } 
+
+
+            if ( role.Role == "Admin" )
+                userRole = "Admin";
+
+            return userRole;
+        }
 
         public IActionResult ManageOrders()
         {
+            if (GetRole() != "Admin")
+                return RedirectToAction("Index", "Home");
+
             var orders = _context.Orders.ToList();
             return View(orders);
         }

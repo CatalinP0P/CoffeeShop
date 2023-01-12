@@ -4,6 +4,7 @@ using CoffeeShop.Models;
 using CoffeeShop.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using System.Security.Claims;
 
 namespace CoffeeShop.Controllers;
 
@@ -21,11 +22,36 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
-        // TEMP CODE
+        string userRole = GetRole();
 
-        return RedirectToAction("Index", "Products");
+        return View("Index", userRole);
+    }
 
-        return View();
+    public string GetRole()
+    {
+        string userRole = "Customer";
+
+        var claimsIdentity = (ClaimsIdentity)User.Identity;
+        var claims = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
+
+        if ( claims == null )
+        {
+            return userRole;
+        }
+
+        var role = _context.AccountRoles.FirstOrDefault(m=>m.UserId == claims.Value);
+
+        if ( role == null )
+        {
+            userRole = "Customer";
+            return userRole;
+        } 
+
+
+        if ( role.Role == "Admin" )
+            userRole = "Admin";
+
+        return userRole;
     }
 
     public IActionResult Privacy()
