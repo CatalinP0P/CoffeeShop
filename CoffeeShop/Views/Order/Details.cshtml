@@ -15,15 +15,15 @@
 
         <div class="card bg-white border-2">
             <div class="container  ">
-                <h2 style="color: #33b5e5" class="mx-3 mt-3"> @Model.Order.Status </h2>
-                <button class="btn mx-3 mt-3 text-white" style="width: 125px; background-color: #33b5e5;"> Istoric Livrare </button>
+                <h2 style="color: #33b5e5" class="mx-2 mt-3"> @Model.Order.Status </h2>
+                <button class="btn mx-2 mt-3 text-white" style="width: 125px; background-color: #33b5e5;"> Istoric Livrare </button>
 
                 <div class="row mt-4">
 
-                    <div class="col bg-transparent">
-                        <div class="card border-3 " style="height: 280px;">
-                            <div class="container text-dark mt-3">
-                                <p> <b> Modalitate de livrare </b> </p>
+                    <div class="col-12 col-md-4 my-2 bg-transparent" style="height:auto" >
+                        <div class="card border-3 " style="height: fit-content;">
+                            <div class="container text-dark auto">
+                                <p class="mt-3"> <b> Modalitate de livrare </b> </p>
                                 <p> Livrare prin curier </p>
 
                                 <p class="text-muted mt-4"> Pentru </p>
@@ -35,8 +35,8 @@
                         </div>
                     </div>
 
-                    <div class="col bg-transparent">
-                        <div class="card border-3" style="height: 280px;">
+                    <div class="col-12 col-md-4 my-2 bg-transparent">
+                        <div class="card border-3" style="height: 100%;">
                             <div class="container text-dark mt-3">
                                 <p> <b> Date Facturare </b> </p>
                                 <p class="text-muted">Pentru</p>
@@ -49,8 +49,8 @@
                         </div>
                     </div>
 
-                    <div class="col bg-transparent">
-                        <div class="card border-3" style="height: 280px;">
+                    <div class="col-12 col-md-4 my-2 bg-transparent">
+                        <div class="card border-3" style="height: 100%;">
                             <div class="container text-dark mt-3 ">
                                 <p> <b> Modalitate de Plata </b> </p>
                                 <p> Ramburs </p>
@@ -70,12 +70,12 @@
                         <div class="row">
                             <div class="col-3 bg-transparent ">
                                 <div class="container" style="height: auto;">
-                                    <img src="@product.ImageURL" class="img-fluid my-2 mx-2" style="max-width:100px; max-height:100px" />
+                                    <img src="@product.ImageURL" class="img-fluid my-2 me-2" style="max-width:100px; max-height:100px" />
                                 </div>
                             </div>
 
                             <div class="col-6 bg-transparent text-dark">
-                                <p class="mt-5"> @product.Name </p>
+                                <p class="mt-5 ms-3"> @product.Name </p>
                             </div>
 
                             <div class="col-3 bg-transparent text-dark ">

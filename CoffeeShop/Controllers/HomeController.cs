@@ -21,7 +21,10 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
-        // AddRole();
+        // TEMP CODE
+
+        return RedirectToAction("Index", "Products");
+
         return View();
     }
 
