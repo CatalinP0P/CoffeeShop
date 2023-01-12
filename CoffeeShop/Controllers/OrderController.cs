@@ -28,11 +28,29 @@ namespace CoffeeShop.Controllers
         [Authorize]
         public IActionResult Details(int id)
         {
+            OrderDetailsViewModel order = new OrderDetailsViewModel();
+            order.Products = new List<Product>();
+
             var orderInDb = _context.Orders.SingleOrDefault(m => m.Id == id);
             if (orderInDb == null)
                 return View("ShowOrders");
 
-            return View("Details", orderInDb);
+            order.Order = orderInDb;
+
+            string[] ids = orderInDb.ProductIds.Split('#');
+
+            for ( int i=1; i<ids.Count()-1; i++ )
+            {
+                int productID = Int32.Parse(ids[i]);
+
+                var productInDb = _context.Products.Single(m => m.Id == productID);
+
+                order.Products.Add(productInDb);
+
+
+            }
+
+            return View("Details", order);
 
         }
 

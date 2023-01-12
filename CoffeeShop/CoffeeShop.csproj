@@ -33,4 +33,7 @@
     <Folder Include="Views\Order\" />
     <Folder Include="Views\Admin\" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Remove="Views\Shared\_OrderDetailsProduct.cshtml" />
+  </ItemGroup>
 </Project>

@@ -6,16 +6,24 @@
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.ItemProperties.CoffeeShop PreferredExecutionTarget="/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app" />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workbench ActiveDocument="Models/StatusType.cs">
+    <Files>
+      <File FileName="Views/Order/ShowOrders.cshtml" Line="8" Column="60" />
+      <File FileName="Views/Order/Details.cshtml" Line="3" Column="37" />
+      <File FileName="Models/ShowOrdersViewModel.cs" Line="8" Column="4" />
+      <File FileName="Models/ProductViewModel.cs" Line="10" Column="1" />
+      <File FileName="Models/Product.cs" Line="10" Column="4" />
+      <File FileName="Models/Order.cs" Line="10" Column="13" />
+      <File FileName="Models/OrderViewModel.cs" Line="16" Column="6" />
+      <File FileName="Models/StatusType.cs" Line="1" Column="1" />
+    </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="CoffeeShop" expanded="True">
             <Node name="CoffeeShop" expanded="True">
               <Node name="Controllers" expanded="True" />
-              <Node name="Models" expanded="True">
-                <Node name="ShowOrdersViewModel.cs" selected="True" />
-              </Node>
+              <Node name="Models" expanded="True" />
               <Node name="Views" expanded="True">
                 <Node name="Order" expanded="True" />
                 <Node name="Shared" expanded="True" />
