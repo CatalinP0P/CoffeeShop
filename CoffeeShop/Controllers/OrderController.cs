@@ -39,7 +39,7 @@ namespace CoffeeShop.Controllers
 
             string[] ids = orderInDb.ProductIds.Split('#');
 
-            for ( int i=1; i<ids.Count()-1; i++ )
+            for (int i = 1; i < ids.Count() - 1; i++)
             {
                 int productID = Int32.Parse(ids[i]);
 
@@ -62,45 +62,47 @@ namespace CoffeeShop.Controllers
 
             var userid = claims.Value;
 
-
             List<ShowOrdersViewModel> orders = new List<ShowOrdersViewModel>();
-
-
 
             foreach (Order order in _context.Orders)
             {
-                List<int> idList = new List<int>();
-
-                string[] ids = order.ProductIds.Split('#');
-
-                for (int i = 1; i < ids.Length - 1; i++)
+                if (order.UserId == userid)
                 {
-                    ids[i] = ids[i].Replace('"', ' ');
-                    idList.Add(Int32.Parse(ids[i]));
+                    List<int> idList = new List<int>();
+
+                    string[] ids = order.ProductIds.Split('#');
+
+                    for (int i = 1; i < ids.Length - 1; i++)
+                    {
+                        ids[i] = ids[i].Replace('"', ' ');
+                        idList.Add(Int32.Parse(ids[i]));
+                    }
+
+                    List<string> imageUrls = new List<string>();
+                    List<Product> productList = new List<Product>();
+
+                    foreach (int id in idList)
+                    {
+                        var productInDb = _context.Products.Single(m => m.Id == id);
+
+                        imageUrls.Add(productInDb.ImageURL);
+
+                        productList.Add(productInDb);
+
+                    }
+
+                    ShowOrdersViewModel temp = new ShowOrdersViewModel
+                    {
+                        Orders = order,
+                        ProductIds = idList,
+                        ProductImageUrl = imageUrls,
+                        Products = productList
+                    };
+
+                    orders.Add(temp);
                 }
 
-                List<string> imageUrls = new List<string>();
-                List<Product> productList = new List<Product>();
 
-                foreach (int id in idList)
-                {
-                    var productInDb = _context.Products.Single(m => m.Id == id);
-
-                    imageUrls.Add(productInDb.ImageURL);
-
-                    productList.Add(productInDb);
-
-                }
-
-                ShowOrdersViewModel temp = new ShowOrdersViewModel
-                {
-                    Orders = order,
-                    ProductIds = idList,
-                    ProductImageUrl = imageUrls,
-                    Products = productList
-                };
-
-                orders.Add(temp);
             }
 
 
@@ -115,9 +117,9 @@ namespace CoffeeShop.Controllers
 
         public IActionResult AdressForm(string id) // userid
         {
-            var cartprod = _context.CartProducts.FirstOrDefault(m=>m.UserId == id);
+            var cartprod = _context.CartProducts.FirstOrDefault(m => m.UserId == id);
             if (cartprod == null)
-                return RedirectToAction("Index","Cart");
+                return RedirectToAction("Index", "Cart");
 
             var adress = new Adress
             {
@@ -128,26 +130,26 @@ namespace CoffeeShop.Controllers
             return View(adress);
         }
 
-        public IActionResult SendOrder( Adress adress )
+        public IActionResult SendOrder(Adress adress)
         {
-            if ( !ModelState.IsValid )
+            if (!ModelState.IsValid)
             {
                 return View("AdressForm", adress);
             }
 
-            
+
 
 
             string productids = "#";
 
             int totalPrice = 0;
 
-            foreach ( var product in _context.CartProducts )
+            foreach (var product in _context.CartProducts)
             {
-                if ( product.UserId == adress.UserId )
+                if (product.UserId == adress.UserId)
                 {
                     productids += $"{product.ProductId}#";
-                    var productInDb = _context.Products.Single(m=>m.Id == product.ProductId);
+                    var productInDb = _context.Products.Single(m => m.Id == product.ProductId);
                     totalPrice += productInDb.Price;
                 }
             }
@@ -177,9 +179,9 @@ namespace CoffeeShop.Controllers
             _context.Orders.Add(Order);
             _context.SaveChanges();
 
-            foreach( CartProducts prod in _context.CartProducts )
+            foreach (CartProducts prod in _context.CartProducts)
             {
-                if ( prod.UserId == adress.UserId )
+                if (prod.UserId == adress.UserId)
                 {
                     _context.CartProducts.Remove(prod);
                 }
@@ -191,11 +193,11 @@ namespace CoffeeShop.Controllers
 
             var orderInDb = _context.Orders.Single(m => m.OrderDate == Order.OrderDate && m.UserId == Order.UserId);
 
-            return View("Message",orderInDb);
+            return View("Message", orderInDb);
 
         }
 
-       
+
     }
 }
 

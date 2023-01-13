@@ -1,32 +1,41 @@
-﻿
-@model List<Product>
+﻿@model ProductsIndexViewModel
 
 <div class="row">
-    @foreach (var item in Model)
+    @foreach (var item in Model.Products)
     {
-        <div class="col-md-4 col-xs-6 border-primary mb-3">
+        <div class="col-lg-4 col-md-6 col-xs-6 border-primary mb-3">
             <div class="card mb-3" style="max-width: 540px;">
                 <div class="row g-0">
                     <div class="col-md-12">
                         <div class="card-header text-white bg-success">
                             <p class="card-text">
-                                <h5 class="card-title">
+                            <h5 class="card-title">
                                     @item.Name
-                                </h5>
+                            </h5>
                             </p>
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <a class="btn" asp-controller="Products" asp-action="Edit" asp-route-id="@item.Id">
+
+                        @if (Model.UserRole == "Admin")
+                        {
+                            <a class="btn" asp-controller="Products" asp-action="Edit" asp-route-id="@item.Id">
+                                <img src="@item.ImageURL" width="100%" alt="@item.Name">
+                            </a>
+                        }
+                        else
+                        {
                             <img src="@item.ImageURL" width="100%" alt="@item.Name">
-                        </a>
+                        }
+
+
 
                     </div>
                     <div class="col-md-6">
                         <div class="card-body">
                             <p class="card-text">@item.Name</p>
                             <p class="card-text"><b>Category: </b>@item.Category</p>
-                            
+
                         </div>
                     </div>
                     <div class="col-md-12">
@@ -35,10 +44,8 @@
                                 <a class="btn btn-outline-primary float-right" asp-action="Details" asp-route-id="@item.Id">
                                     <i class="bi bi-eye-fill"></i> Show Details
                                 </a>
-                                <a class="btn btn-success text-white"
-                                   asp-controller="Products"
-                                   asp-action="AddToCart"
-                                   asp-route-id="@item.Id">
+                                <a class="btn btn-success text-white" asp-controller="Products" asp-action="AddToCart"
+                                asp-route-id="@item.Id">
                                     <i class="bi bi-cart-plus"></i> Add to Cart (Price @item.Price.ToString("c"))
                                 </a>
                             </p>

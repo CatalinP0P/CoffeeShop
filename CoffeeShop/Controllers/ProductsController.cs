@@ -15,13 +15,13 @@ using System.Security.Principal;
 
 namespace CoffeeShop.Controllers
 {
-    
+
     public class ProductsController : Controller
     {
 
         private readonly ILogger<HomeController> _logger;
         private readonly ApplicationDbContext _context;
-     
+
         public ProductsController(ILogger<HomeController> logger,
             ApplicationDbContext context)
         {
@@ -32,9 +32,40 @@ namespace CoffeeShop.Controllers
         // Products
         public IActionResult Index()
         {
-            var productList = _context.Products.ToList();
-            return View(productList);
+            string userRole = GetRole();
+
+            ProductsIndexViewModel viewModel = new ProductsIndexViewModel
+            {
+                Products = _context.Products.ToList(),
+                UserRole = userRole
+            };
+
+            return View(viewModel);
         }
+
+       public IActionResult Filter(string Filter)
+        {
+            string userRole = GetRole();
+
+            var productList = new List<Product>();
+
+            foreach ( var product in _context.Products )
+            {
+                if ( product.Name.Contains(Filter) )
+                {
+                    productList.Add(product);
+                }
+            }
+
+            ProductsIndexViewModel viewModel = new ProductsIndexViewModel
+            {
+                Products = productList,
+                UserRole = userRole
+            };
+
+            return View("Index",viewModel);
+        }
+
 
         // Products/New
         public IActionResult New()
@@ -67,11 +98,11 @@ namespace CoffeeShop.Controllers
 
 
         // Products/Details/{id}
-        public IActionResult Details( int id )
+        public IActionResult Details(int id)
         {
-            var productInDb = _context.Products.SingleOrDefault( m => m.Id == id );
+            var productInDb = _context.Products.SingleOrDefault(m => m.Id == id);
 
-            if ( productInDb == null )
+            if (productInDb == null)
                 return RedirectToAction("Index", "Products");
 
             return View(productInDb);
@@ -88,7 +119,7 @@ namespace CoffeeShop.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Save(Product product)
         {
-            if ( !ModelState.IsValid )
+            if (!ModelState.IsValid)
             {
                 if (product.Id == 0)
                 {
@@ -99,8 +130,8 @@ namespace CoffeeShop.Controllers
 
                     return View("ProductForm", vm);
 
-                }    
-                    
+                }
+
             }
 
             if (product.Id == 0)
@@ -138,7 +169,7 @@ namespace CoffeeShop.Controllers
         }
 
 
-        public IActionResult AddToCart( int id )
+        public IActionResult AddToCart(int id)
         {
 
             var claimsIdentity = (ClaimsIdentity)User.Identity;
@@ -161,6 +192,35 @@ namespace CoffeeShop.Controllers
             return RedirectToAction("Index", "Cart");
         }
 
+
+
+
+        public string GetRole()
+        {
+            string userRole = "Customer";
+
+            var claimsIdentity = (ClaimsIdentity)User.Identity;
+            var claims = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
+
+            if (claims == null)
+            {
+                return userRole;
+            }
+
+            var role = _context.AccountRoles.FirstOrDefault(m => m.UserId == claims.Value);
+
+            if (role == null)
+            {
+                userRole = "Customer";
+                return userRole;
+            }
+
+
+            if (role.Role == "Admin")
+                userRole = "Admin";
+
+            return userRole;
+        }
     }
 }
 

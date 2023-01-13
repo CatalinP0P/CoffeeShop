@@ -1,13 +1,29 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-
-
-@model List<Product>
+﻿@model ProductsIndexViewModel
 
 <h1> Products </h1>
 <hr />
 
-<a class="btn btn-success text-white" asp-controller="Products" asp-action="New"> Add Product </a>
+@if (Model.UserRole == "Admin")
+{
+    <a class="btn btn-success text-white" asp-controller="Products" asp-action="New"> Add Product </a>
+}
 
-@Html.Partial("_ProductCard", Model)
+@using (Html.BeginForm("Filter", "Products", @Model.Filter))
+{
+<div class="row my-3 g-0">
+    <div class="col-10 col-lg-4 col-md-6 my-auto">
+        <div class="form-group">
+            @Html.TextBoxFor(m=>m.Filter, new {@class = "form-control"})
+        </div>
+
+    </div>
+    <div class="col-1 ms-1">
+        <button type="submit" class="btn btn-outline-success">Search</button>
+    </div>
+</div>
+
+
+}
+
+
+@Html.Partial("_ProductCard", @Model)
