@@ -53,11 +53,48 @@ namespace CoffeeShop.Controllers
 
         public IActionResult ManageOrders()
         {
+            ManageOrdersViewModel viewModel = new ManageOrdersViewModel();
+            
+
             if (GetRole() != "Admin")
                 return RedirectToAction("Index", "Home");
 
             var orders = _context.Orders.ToList();
-            return View(orders);
+            viewModel.Orders = orders;
+            return View(viewModel);
+        }
+
+        public IActionResult FilterOrders(ManageOrdersViewModel vm)
+        {
+            if ( vm.Filter == "Show All" )
+                return RedirectToAction("ManageOrders", "Admin");
+
+            ManageOrdersViewModel viewModel = new ManageOrdersViewModel();
+            viewModel.Filter = vm.Filter;
+            List<Order> orderList = new List<Order>();
+
+            foreach( Order ord in _context.Orders )
+            {
+                if ( ord.Status == vm.Filter )
+                {
+                    orderList.Add(ord);
+                }
+            }
+
+
+            if (GetRole() != "Admin")
+                return RedirectToAction("Index", "Home");
+
+            var orders = orderList;
+            viewModel.Orders = orders;
+            return View("ManageOrders", viewModel);
+        
+        }
+
+
+        public IActionResult ManageRoles()
+        {
+            return View();
         }
 
         public IActionResult OrderStatus(int id )

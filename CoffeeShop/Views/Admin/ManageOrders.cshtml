@@ -1,9 +1,28 @@
-﻿@model List<Order>
+﻿@model ManageOrdersViewModel
 
-<h1> Manage Orders </h1>
+<div class="row">
+    <div class="col my-auto">
+        <h1> Manage Orders </h1>
+    </div>
+    <div class="col my-auto">
+        @using (Html.BeginForm("FilterOrders", "Admin"))
+        {
+            <div class="form-group">
+                <div class="row">
+                    @Html.DropDownListFor(m=>m.Filter, new SelectList(Model.StatusTypes), new { @class = "form-control" })
+                    <button class="btn btn-outline-primary form-control" type="submit"> Filter </button>
+                </div>
+
+            </div>
+
+        }
+
+    </div>
+</div>
+
 <hr />
 
-<div class="containter bg-transparent" >
+<div class="containter bg-transparent">
 
     <table class="table">
 
@@ -17,7 +36,7 @@
         </tr>
 
 
-        @foreach (var order in Model)
+        @foreach (var order in Model.Orders)
         {
 
             @if (order.Status == StatusType.Pending.ToString())
@@ -25,7 +44,8 @@
                 <tr class="table-active">
                     <th> @order.Id </th>
                     <th> @order.UserId </th>
-                    <th> <a class="text-decoration-underline" asp-action="OrderAdress" asp-controller="Admin" asp-route-orderid="@order.Id"> Adress </a> </th>
+                    <th> <a class="text-decoration-underline" asp-action="OrderAdress" asp-controller="Admin"
+                    asp-route-orderid="@order.Id"> Adress </a> </th>
                     <th><a> Products </a></th>
                     <th> @order.Price </th>
                     <th> <a asp-action="OrderStatus" asp-controller="Admin" asp-route-id="@order.Id">Pending</a> </th>
@@ -38,7 +58,8 @@
                 <tr class="table-info">
                     <th> @order.Id </th>
                     <th> @order.UserId </th>
-                    <th> <a class="text-decoration-underline" asp-action="OrderAdress" asp-controller="Admin" asp-route-orderid="@order.Id"> Adress </a> </th>
+                    <th> <a class="text-decoration-underline" asp-action="OrderAdress" asp-controller="Admin"
+                    asp-route-orderid="@order.Id"> Adress </a> </th>
                     <th><a> Products </a></th>
                     <th> @order.Price </th>
                     <th> <a asp-action="OrderStatus" asp-controller="Admin" asp-route-id="@order.Id">Confirmed</a> </th>
@@ -50,7 +71,8 @@
                 <tr class="table-warning">
                     <th> @order.Id </th>
                     <th> @order.UserId </th>
-                    <th> <a class="text-decoration-underline" asp-action="OrderAdress" asp-controller="Admin" asp-route-orderid="@order.Id"> Adress </a> </th>
+                    <th> <a class="text-decoration-underline" asp-action="OrderAdress" asp-controller="Admin"
+                    asp-route-orderid="@order.Id"> Adress </a> </th>
                     <th><a> Products </a></th>
                     <th> @order.Price </th>
                     <th> <a asp-action="OrderStatus" asp-controller="Admin" asp-route-id="@order.Id">Send</a> </th>
@@ -61,7 +83,8 @@
                 <tr class="table-success">
                     <th> @order.Id </th>
                     <th> @order.UserId </th>
-                    <th> <a class="text-decoration-underline" asp-action="OrderAdress" asp-controller="Admin" asp-route-orderid="@order.Id"> Adress </a> </th>
+                    <th> <a class="text-decoration-underline" asp-action="OrderAdress" asp-controller="Admin"
+                    asp-route-orderid="@order.Id"> Adress </a> </th>
                     <th><a> Products </a></th>
                     <th> @order.Price </th>
                     <th> <a asp-action="OrderStatus" asp-controller="Admin" asp-route-id="@order.Id">Received</a> </th>
@@ -73,7 +96,8 @@
                 <tr class="table-danger">
                     <th> @order.Id </th>
                     <th> @order.UserId </th>
-                    <th> <a class="text-decoration-underline" asp-action="OrderAdress" asp-controller="Admin" asp-route-orderid="@order.Id"> Adress </a> </th>
+                    <th> <a class="text-decoration-underline" asp-action="OrderAdress" asp-controller="Admin"
+                    asp-route-orderid="@order.Id"> Adress </a> </th>
                     <th><a> Products </a></th>
                     <th> @order.Price </th>
                     <th> <a asp-action="OrderStatus" asp-controller="Admin" asp-route-id="@order.Id">Canceled</a> </th>
@@ -84,7 +108,8 @@
                 <tr class="table-info">
                     <th> @order.Id </th>
                     <th> @order.UserId </th>
-                    <th> <a class="text-decoration-underline" asp-action="OrderAdress" asp-controller="Admin" asp-route-orderid="@order.Id"> Adress </a> </th>
+                    <th> <a class="text-decoration-underline" asp-action="OrderAdress" asp-controller="Admin"
+                    asp-route-orderid="@order.Id"> Adress </a> </th>
                     <th><a> Products </a></th>
                     <th> @order.Price </th>
                     <th> <a asp-action="OrderStatus" asp-controller="Admin" asp-route-id="@order.Id">Canceled</a> </th>

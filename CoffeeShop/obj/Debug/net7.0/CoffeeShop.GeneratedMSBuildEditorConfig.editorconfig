@@ -24,6 +24,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW4vTWFuYWdlT3JkZXJzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[/Users/catalinpop/Documents/Git/CoffeeShop/CoffeeShop/Views/Admin/ManageRoles.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW4vTWFuYWdlUm9sZXMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [/Users/catalinpop/Documents/Git/CoffeeShop/CoffeeShop/Views/Admin/OrderAdress.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW4vT3JkZXJBZHJlc3MuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
