@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/catalinpop/Documents/Git/CoffeeShop/CoffeeShop/CoffeeShop.csproj": {}
+    "/Users/catalinpop/Projects/CoffeeShop/CoffeeShop/CoffeeShop.csproj": {}
   },
   "projects": {
-    "/Users/catalinpop/Documents/Git/CoffeeShop/CoffeeShop/CoffeeShop.csproj": {
+    "/Users/catalinpop/Projects/CoffeeShop/CoffeeShop/CoffeeShop.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/catalinpop/Documents/Git/CoffeeShop/CoffeeShop/CoffeeShop.csproj",
+        "projectUniqueName": "/Users/catalinpop/Projects/CoffeeShop/CoffeeShop/CoffeeShop.csproj",
         "projectName": "CoffeeShop",
-        "projectPath": "/Users/catalinpop/Documents/Git/CoffeeShop/CoffeeShop/CoffeeShop.csproj",
+        "projectPath": "/Users/catalinpop/Projects/CoffeeShop/CoffeeShop/CoffeeShop.csproj",
         "packagesPath": "/Users/catalinpop/.nuget/packages/",
-        "outputPath": "/Users/catalinpop/Documents/Git/CoffeeShop/CoffeeShop/obj/",
+        "outputPath": "/Users/catalinpop/Projects/CoffeeShop/CoffeeShop/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/catalinpop/.nuget/NuGet/NuGet.Config"

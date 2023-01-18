@@ -137,7 +137,14 @@ namespace CoffeeShop.Controllers
             var orderInDb = _context.Orders.Single(m=>m.Id == order.Id);
             orderInDb.Status = order.Status;
             _context.SaveChanges();
-            return View("ManageOrders", _context.Orders.ToList());
+
+            ManageOrdersViewModel viewModel = new ManageOrdersViewModel
+            {
+                Orders = _context.Orders.ToList(),
+                Filter = ""
+            };
+
+            return View("ManageOrders", viewModel);
             
         }
     }
