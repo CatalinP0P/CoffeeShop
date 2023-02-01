@@ -152,3 +152,4 @@
 /Users/catalinpop/Documents/Git/CoffeeShop/CoffeeShop/obj/Debug/net7.0/CoffeeShop.pdb
 /Users/catalinpop/Documents/Git/CoffeeShop/CoffeeShop/obj/Debug/net7.0/CoffeeShop.genruntimeconfig.cache
 /Users/catalinpop/Documents/Git/CoffeeShop/CoffeeShop/obj/Debug/net7.0/ref/CoffeeShop.dll
+/Users/catalinpop/Projects/CoffeeShop/CoffeeShop/bin/Debug/net7.0/Newtonsoft.Json.dll

@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Authorization;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Identity;
 using System.Security.Principal;
+using Newtonsoft.Json;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -21,22 +22,42 @@ namespace CoffeeShop.Controllers
 
         private readonly ILogger<HomeController> _logger;
         private readonly ApplicationDbContext _context;
+        private readonly IProductService _productService;
 
         public ProductsController(ILogger<HomeController> logger,
-            ApplicationDbContext context)
+            ApplicationDbContext context,
+            IProductService productService)
         {
             _logger = logger;
             _context = context;
+            _productService = productService;
         }
 
+        // public IActionResult TestAPI()
+        // {
+        //     var product = new Product()
+        //     {
+        //         Name = "TestAPI",
+        //         Category = "TestAPI",
+        //         Stock = 100,
+        //         Price = 100,
+        //         ImageURL = "test"
+        //     };
+
+        //     _productService.PostProduct(product);
+
+        //     return RedirectToAction("Index", "Products");
+        // }
+
+
         // Products
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
             string userRole = GetRole();
 
             ProductsIndexViewModel viewModel = new ProductsIndexViewModel
             {
-                Products = _context.Products.ToList(),
+                Products = await _productService.GetProducts(),
                 UserRole = userRole
             };
 
@@ -51,7 +72,6 @@ namespace CoffeeShop.Controllers
 
             foreach ( var product in _context.Products )
             {
-                if ( product.Name.Contains(Filter) )
                 {
                     productList.Add(product);
                 }
@@ -136,7 +156,7 @@ namespace CoffeeShop.Controllers
 
             if (product.Id == 0)
             {
-                _context.Products.Add(product);
+                _productService.PostProduct(product);
             }
             else
             {
@@ -146,26 +166,23 @@ namespace CoffeeShop.Controllers
                 productInDb.Category = product.Category;
                 productInDb.Price = product.Price;
                 productInDb.ImageURL = product.ImageURL;
+                _context.SaveChanges();
             }
-
-            _context.SaveChanges();
 
             return RedirectToAction("Index", "Products");
         }
 
 
-        public IActionResult Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
-            var productInDb = _context.Products.SingleOrDefault(m => m.Id == id);
+            List<Product> productsList = await _productService.GetProducts();
+            var productInDb = productsList.SingleOrDefault(m=>m.Id == id);
             if (productInDb != null)
             {
-                _context.Products.Remove(productInDb);
-                _context.SaveChanges();
+                _productService.DeleteProduct(id);
             }
 
-
             return RedirectToAction("Index", "Products");
-
         }
 
 

@@ -23,7 +23,7 @@ public class HomeController : Controller
     public IActionResult Index()
     {
         string userRole = GetRole();
-
+        
         return View("Index", userRole);
     }
 
